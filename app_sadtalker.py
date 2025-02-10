@@ -22,6 +22,8 @@ def ref_video_fn(path_of_ref_video):
     else:
         return gr.update(value=False)
 
+
+
 def sadtalker_demo(checkpoint_path='checkpoints', config_path='src/config', warpfn=None):
 
     sad_talker = SadTalker(checkpoint_path, config_path, lazy_load=True)
@@ -51,6 +53,7 @@ def sadtalker_demo(checkpoint_path='checkpoints', config_path='src/config', warp
                                 input_text = gr.Textbox(label="Generating audio from text", lines=5, placeholder="please enter some text here, we genreate the audio from text using @Coqui.ai TTS.")
                                 tts = gr.Button('Generate audio',elem_id="sadtalker_audio_generate", variant='primary')
                                 tts.click(fn=tts_talker.test, inputs=[input_text], outputs=[driven_audio])
+                                
                             
             with gr.Column(variant='panel'): 
                 with gr.Tabs(elem_id="sadtalker_checkbox"):
